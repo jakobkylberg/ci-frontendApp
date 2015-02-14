@@ -1,0 +1,30 @@
+<div id="main" class="container-fluid" ng-controller="PersonController as personController">
+    <div class="container">
+        <main id="content" role="main" aria-labelledby="main-desc" tabindex="-1">
+            <form role="form">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Land</label>
+                        <select class="form-control" ng-options="person.country for person in personController.persons" ng-model="personController.country" ng-change="personController.onChangeCountry()">
+                            <option value="">Välj ett land</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Personer</label>
+                        <select class="form-control">
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                            <option value="mercedes">Mercedes</option>
+                            <option value="audi">Audi</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <a class="btn btn-primary">Spara</a>
+                    </div>
+                </div>
+            </form>
+        </main>
+    </div>
+</div>
