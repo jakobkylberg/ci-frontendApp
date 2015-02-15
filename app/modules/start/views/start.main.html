@@ -5,17 +5,14 @@
                 <div class="row">
                     <div class="col-md-3">
                         <label>Land</label>
-                        <select class="form-control" ng-options="person.country for person in personController.persons" ng-model="personController.country" ng-change="personController.onChangeCountry()">
+                        <select class="form-control" ng-options="person.country for person in personController.allPersons" ng-model="personController.country" ng-change="personController.onChangeCountry()">
                             <option value="">Välj ett land</option>
                         </select>
                     </div>
                     <div class="col-md-3">
                         <label>Personer</label>
-                        <select class="form-control">
-                            <option value="volvo">Volvo</option>
-                            <option value="saab">Saab</option>
-                            <option value="mercedes">Mercedes</option>
-                            <option value="audi">Audi</option>
+                        <select class="form-control" ng-options="person.name for person in personController.persons" ng-model="personController.person">
+                            <option value="">Välj en person</option>
                         </select>
                     </div>
                 </div>

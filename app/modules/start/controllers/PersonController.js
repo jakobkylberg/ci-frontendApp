@@ -3,12 +3,18 @@ angular.module('myApp')
 
 function PersonController(PersonService) {
     this.country = "";
+    this.person = "";
     var that = this;
     PersonService.query().$promise.then(function (response) {
-       that.persons = response;
+       that.allPersons = response;
+       that.persons = [];
     });
 }
 
 PersonController.prototype.onChangeCountry = function() {
-    console.log("on change");
+    var that = this;
+    this.persons = _.filter(this.allPersons, function (person) {
+       return that.country === person;
+    });
+    this.person = "";
 };
