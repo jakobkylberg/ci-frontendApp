@@ -17,7 +17,9 @@ module.exports = function(config) {
             'app/bower_components/angular-resource/angular-resource.js',
             'app/bower_components/lodash/dist/lodash.underscore.js',
             'test/**/*.js',
-            'app/js/app.js'
+            'app/js/app.js',
+            'app/common/services/PersonService.js',
+            'app/modules/start/controllers/PersonController.js'
         ],
 
         preprocessors : {
