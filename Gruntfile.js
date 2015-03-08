@@ -179,19 +179,30 @@ module.exports = function (grunt) {
                     }
                 ]
             },
-            bower_components : {
+            bower_components_min : {
                 files: [
                     {
                         src: [
                             'app/bower_components/jquery/dist/jquery.min.js',
                             'app/bower_components/angular/angular.min.js',
-                            'app/bower_components/angular-ui-router/release/angular-ui-router.min.js',
                             'app/bower_components/angular-resource/angular-resource.min.js',
-                            'app/bower_components/angular-agility/dist/angular-agility.min.js',
-                            'app/bower_components/lodash/dist/lodash.min.js',
-                            'app/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js'
+                            'app/bower_components/lodash/dist/lodash.min.js'
                         ],
                         dest: '<%= yeoman.dist %>/generic_components/bower_components.min.js'
+
+                    }
+                ]
+            },
+            bower_components : {
+                files: [
+                    {
+                        src: [
+                            'app/bower_components/jquery/dist/jquery.js',
+                            'app/bower_components/angular/angular.js',
+                            'app/bower_components/angular-resource/angular-resource.js',
+                            'app/bower_components/lodash/dist/lodash.js'
+                        ],
+                        dest: '<%= yeoman.dist %>/generic_components/bower_components.js'
 
                     }
                 ]
@@ -237,9 +248,9 @@ module.exports = function (grunt) {
                 files: {
                     '.tmp/concat/js/angularMerge.js': [
                         'app/js/app.js',
-                        'app/modules/start/startModule.js',
-                        'app/modules/start/services/Services.js',
-                        'app/modules/start/controllers/StartController.js'
+                        'app/js/constants.js',
+                        'app/common/services/PersonService.js',
+                        'app/modules/start/controllers/PersonController.js'
                     ]
                 }
             }
@@ -265,10 +276,13 @@ module.exports = function (grunt) {
                         flatten: true
                     },
                     {
-                        src: ['app/modules/start/testdata/Courses.json'],
-                        dest: '<%= yeoman.dist %>',
-                        filter: 'isFile',
-                        expand: true
+                        src: ['app/modules/start/testdata/Persons.json'],
+                        dest: '<%= yeoman.dist %>/',
+                        expand: true,
+                        flatten: true,
+                        rename: function (dest, src) {
+                            return dest + "/modules/start/testdata/Persons.json";
+                        }
                     },
                     {
                         src: ['app/index_tmp.html'],
@@ -277,6 +291,15 @@ module.exports = function (grunt) {
                         expand: true,
                         rename: function (dest, src) {
                             return dest + 'index.html';
+                        }
+                    },
+                    {
+                        src: ['app/bower_components/bootstrap/dist/css/bootstrap.min.css'],
+                        dest: '<%= yeoman.dist %>/',
+                        expand: true,
+                        flatten: true,
+                        rename: function (dest, src) {
+                            return dest + "/styles/bootstrap.min.css";
                         }
                     }
                 ]
