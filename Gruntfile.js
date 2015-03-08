@@ -248,7 +248,7 @@ module.exports = function (grunt) {
                 files: {
                     '.tmp/concat/js/angularMerge.js': [
                         'app/js/app.js',
-                        'app/js/constants.js',
+                        '.tmp/constants.js',
                         'app/common/services/PersonService.js',
                         'app/modules/start/controllers/PersonController.js'
                     ]
@@ -364,18 +364,22 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('build', function (target) {
+       // grunt.task.run(['clean:dist']);
+        grunt.file.write('.tmp/constants.js', 'angular.module(\'myApp\').constant(\'ABS_URL\', \'modules/start/testdata\');');
+
+
         var mode = grunt.option('mode');
-        var prodMode = ['clean:dist', 'ngAnnotate', 'uglify:generated', 'cssmin', 'htmlmin', 'copy:main', 'concat:bower_components'];
-        var devMode = ['clean:dist', 'ngAnnotate', 'copy:debug', 'concat:dist'];
+        var prodMode = ['ngAnnotate', 'uglify:generated', 'cssmin', 'htmlmin', 'copy:main', 'concat:bower_components'];
+        var devMode = ['ngAnnotate', 'copy:debug', 'concat:dist'];
         if (mode == 'DEBUG') {
             grunt.task.run(devMode);
-            prodMode.splice(0, 2);
+            prodMode.splice(0, 1);
             grunt.task.run(prodMode);
         } else if (mode == 'PROD') {
             grunt.task.run(prodMode);
         } else {
             grunt.task.run(devMode);
-            prodMode.splice(0, 2);
+            prodMode.splice(0, 1);
             grunt.task.run(prodMode);
         }
 
