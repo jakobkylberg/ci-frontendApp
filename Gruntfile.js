@@ -365,7 +365,8 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build', function (target) {
        // grunt.task.run(['clean:dist']);
-        grunt.file.write('.tmp/constants.js', 'angular.module(\'myApp\').constant(\'ABS_URL\', \'modules/start/testdata\');');
+        var url = grunt.option('url');
+        grunt.file.write('.tmp/constants.js', 'angular.module(\'myApp\').constant(\'ABS_URL\',' + '\'' + url + '\');');
 
 
         var mode = grunt.option('mode');
