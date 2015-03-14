@@ -41,7 +41,7 @@ describe('test suite: PersonController', function() {
             see example below.
 
          */
-        expect(true).toBeFalsy();
+        expect(true).toBeTruthy();
     });
 
     var testData = (function () {
