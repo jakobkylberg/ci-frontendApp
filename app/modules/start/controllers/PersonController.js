@@ -4,11 +4,13 @@ angular.module('myApp')
 function PersonController(PersonService) {
     this.selectedPerson = {};
     this.person = "";
+    this.personService = PersonService;
     var that = this;
     PersonService.query().$promise.then(function (response) {
        that.allPersons = response;
        that.persons = [];
     });
+
 }
 
 PersonController.prototype.onChangeCountry = function() {

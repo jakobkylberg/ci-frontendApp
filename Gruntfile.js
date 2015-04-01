@@ -364,10 +364,6 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('build', function (target) {
-       // grunt.task.run(['clean:dist']);
-        var url = grunt.option('url');
-        grunt.file.write('.tmp/constants.js', 'angular.module(\'myApp\').constant(\'ABS_URL\',' + '\'' + url + '\');');
-
 
         var mode = grunt.option('mode');
         var prodMode = ['ngAnnotate', 'uglify:generated', 'cssmin', 'htmlmin', 'copy:main', 'concat:bower_components'];
