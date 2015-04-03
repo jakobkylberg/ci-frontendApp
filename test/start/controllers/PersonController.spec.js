@@ -16,10 +16,10 @@ describe('test suite: PersonController', function() {
         $rootScope = _$rootScope_;
         PersonService = _PersonService_;
 
-        spyOn(PersonService, 'query').andCallFake(function () {
+        spyOn(PersonService, 'loadPersons').andCallFake(function () {
             var deferred = $q.defer();
             deferred.resolve(testData.getPersons());
-            return {$promise: deferred.promise};
+            return deferred.promise;
         });
     }));
 

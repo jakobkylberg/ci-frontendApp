@@ -6,7 +6,7 @@ function PersonController(PersonService) {
     this.person = "";
     this.personService = PersonService;
     var that = this;
-    PersonService.query().$promise.then(function (response) {
+    PersonService.loadPersons().then(function (response) {
        that.allPersons = response;
        that.persons = [];
     });
